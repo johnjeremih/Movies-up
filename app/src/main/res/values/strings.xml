@@ -1,0 +1,49 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+
+    <string name="app_name">Movies Up</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="empty_view">There are not info to display</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_menu_item">Settings</string>
+
+
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_popular_value</string>
+
+    <!-- Label for order-by popular option -->
+    <string name="settings_order_by_popular_label">Popular</string>
+    <string name="settings_order_by_popular_value" translatable="false">popular</string>
+
+    <!-- Label for order-by top rated option -->
+    <string name="settings_order_by_top_rated_label">Top Rated</string>
+    <string name="settings_order_by_top_rated_value" translatable="false">top_rated</string>
+
+    <!-- Label for order-by Favorites option -->
+    <string name="settings_order_by_favorites_label">Favorites</string>
+    <string name="settings_order_by_favorites_value" translatable="false">favorites</string>
+
+    <!-- Missing key String -->
+    <string name="missing_key_message">The APIKEY is missing and cannot obtain the data without it. Please go to "gradle.properties" and add yours.</string>
+
+    <!-- Labels -->
+    <string name="favorite_content_desc">Mark as favorite</string>
+    <string name="add_favorite_text"><xliff:g id="title">%1$s added to favorites </xliff:g></string>
+    <string name="remove_favorite_text"><xliff:g id="title">%1$s removed from favorites </xliff:g></string>
+
+    <string name="favorite_empty_text">No favorites were found.</string>
+    <string name="action_delete_favorites">Delete favorites</string>
+    <string name="delete_dialog_message">Do you want to delete all your favorites?</string>
+    <string name="delete_dialog_confirm">Yes</string>
+    <string name="delete_dialog_cancel">No</string>
+    <string name="delete_dialog_success">You successfully deleted all your favorites</string>
+    <string name="delete_dialog_error">We could not delete any favorites</string>
+
+
+
+
+    <string name="transition_photo">photo_transition</string>
+
+
+</resources>

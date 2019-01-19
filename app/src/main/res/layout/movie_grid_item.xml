@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@android:color/black"
+    android:orientation="vertical">
+
+
+    <kr.pe.burt.android.lib.androidgradientimageview.AndroidGradientImageView
+        android:id="@+id/poster_view"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher"
+        android:transitionName="@string/transition_photo"
+        app:giv_endColor="#ae060606"
+        app:giv_endOffset="1.0"
+        app:giv_rotate="45.0"
+        app:giv_x="0.0"
+        app:giv_y="0.0"
+        />
+
+    <TextView
+        android:id="@+id/rating_view"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignEnd="@id/poster_view"
+        android:layout_alignRight="@id/poster_view"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rating_circle"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:transitionName="ratingName"
+        tools:text="8.9" />
+
+
+    <TextView
+        android:id="@+id/title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="end"
+        android:layout_marginBottom="19dp"
+        android:layout_marginLeft="@dimen/mini_margin"
+        android:layout_marginRight="@dimen/mini_margin"
+        android:fontFamily="sans-serif-medium"
+        android:paddingBottom="10dp"
+        android:textColor="@android:color/white"
+        android:textSize="16dp"
+        android:transitionName="titleName"
+        tools:text="Blade runner" />
+
+
+</RelativeLayout>

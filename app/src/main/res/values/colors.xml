@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#314a63</color>
+    <color name="colorPrimaryDark">#2b4056</color>
+    <color name="colorAccent">#40afff</color>
+
+    <color name="Text_color">#ffffff</color>
+    <color name="Black">#9a000000</color>
+
+
+    <!-- Rating colors -->
+
+    <color name="start10">#b46be23c</color>
+
+
+    <color name="start9">#b4aaff32</color>
+
+
+    <color name="start8">#b4caff1c</color>
+
+
+    <color name="start7">#b4fffb29</color>
+
+
+    <color name="start6">#96ffe850</color>
+
+
+    <color name="start5">#b4fca044</color>
+
+
+    <color name="start4">#b4e75f40</color>
+
+
+    <color name="start3">#b4e13a20</color>
+
+
+    <color name="start2">#b4d93218</color>
+
+
+    <color name="start1">#b4c03823</color>
+
+
+</resources>
