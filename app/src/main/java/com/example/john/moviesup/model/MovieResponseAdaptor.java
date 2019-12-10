@@ -3,9 +3,9 @@ package com.example.john.moviesup.model;
 import android.content.Context;
 
 import android.graphics.drawable.GradientDrawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.example.john.moviesup.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,6 +78,7 @@ public class MovieResponseAdaptor extends RecyclerView.Adapter<MovieResponseAdap
         }
     }
 
+    @NotNull
     @Override
     public MovieAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();

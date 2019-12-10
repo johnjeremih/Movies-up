@@ -1,6 +1,5 @@
 package com.example.john.moviesup;
 
-import android.app.ActivityOptions;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -9,10 +8,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -20,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.john.moviesup.api.Client;
-import com.example.john.moviesup.favorites.Favorites;
 import com.example.john.moviesup.favorites.Favorites.FavoritesEntry;
 import com.example.john.moviesup.model.Movie;
 import com.example.john.moviesup.reviews.Review;
@@ -106,6 +104,7 @@ public class DetailActivity extends AppCompatActivity implements TrailersAdapter
 
             if (extras.containsKey(MovieActivity.DETAIL_MOVIE_KEY)) {
                 movie = extras.getParcelable(MovieActivity.DETAIL_MOVIE_KEY);
+                assert movie != null;
                 mId = movie.getId();
                 mTitle = movie.getTitle();
                 posterPath = movie.getPosterPath();
@@ -168,6 +167,7 @@ public class DetailActivity extends AppCompatActivity implements TrailersAdapter
 
 
         ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connectivityManager != null;
         NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
 
         boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();

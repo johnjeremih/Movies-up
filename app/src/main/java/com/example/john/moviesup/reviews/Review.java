@@ -53,7 +53,7 @@ public class Review implements Parcelable {
         mId = newId;
     }
 
-    public String getAuthor() {
+    String getAuthor() {
         return mAuthor;
     }
 
