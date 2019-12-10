@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
@@ -44,22 +45,32 @@
                 android:background="@drawable/black_panther"
                 android:scaleType="centerCrop" />
 
-            <ImageView
-                android:id="@+id/poster_path"
-                android:layout_width="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
                 android:layout_height="200dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/margin_poster"
-                android:transitionName="@string/transition_photo"/>
+                app:cardPreventCornerOverlap="true"
+                app:cardCornerRadius="4dp">
+
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:id="@+id/poster_path"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:transitionName="@string/transition_photo"/>
+            </androidx.cardview.widget.CardView>
+
 
             <RelativeLayout
                 android:id="@+id/favorite_button"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignBottom="@id/back_drop_path"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginBottom="@dimen/margin"
-                android:layout_marginRight="@dimen/margin_new"
+                android:layout_marginEnd="@dimen/margin_new"
                 android:background="@drawable/like_icon"
                 android:tint="@android:color/white"
 
@@ -70,7 +81,7 @@
                     android:layout_width="28dp"
                     android:layout_height="26dp"
                     android:layout_centerInParent="true"
-                    android:contentDescription="hello"
+                    android:contentDescription="@string/hello"
                     android:src="@drawable/ic_favorite_border" />
             </RelativeLayout>
 
@@ -85,8 +96,8 @@
                     android:id="@+id/title_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin"
-                    android:text="Title"
+                    android:layout_marginStart="@dimen/margin"
+                    android:text="@string/title"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/Text_color"
                     android:textStyle="bold" />
@@ -96,8 +107,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/title_label"
-                    android:layout_marginLeft="@dimen/margin"
-                    android:text="Black Panther"
+                    android:layout_marginStart="@dimen/margin"
+                    android:text="@string/black_panther"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="@color/Text_color"
                     android:transitionName="titleName" />
@@ -107,14 +118,14 @@
                     android:id="@+id/rating_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/mini_margin"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/mini_margin"
                     android:background="@drawable/rating_rectangular"
-                    android:drawableLeft="@drawable/ic_star_black_24dp"
+                    android:drawableStart="@drawable/ic_star_black_24dp"
                     android:paddingBottom="4dp"
-                    android:paddingLeft="6dp"
-                    android:paddingRight="8dp"
-                    android:text=" 8.6"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="8dp"
+                    android:text="@string/_8_6"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/Text_color"
                     android:textStyle="bold"
@@ -128,8 +139,8 @@
                     android:layout_below="@id/title_tv"
                     android:layout_marginBottom="@dimen/mini_margin"
                     android:layout_marginTop="@dimen/mini_margin"
-                    android:paddingLeft="16dp"
-                    android:text="Overview"
+                    android:paddingStart="16dp"
+                    android:text="@string/overview"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/Text_color"
                     android:textStyle="bold" />
@@ -142,7 +153,7 @@
                     android:layout_marginBottom="@dimen/mini_margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:layout_marginRight="@dimen/margin"
-                    android:text="King T'Challa returns home from America to the reclusive"
+                    android:text="@string/king_t_challa_returns_home_from_america_to_the_reclusive"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="@color/Text_color" />
 
@@ -152,8 +163,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/overview_tv"
                     android:layout_marginBottom="@dimen/mini_margin"
-                    android:layout_marginLeft="@dimen/margin"
-                    android:text="Release Date"
+                    android:layout_marginStart="@dimen/margin"
+                    android:text="@string/release_date"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/Text_color"
                     android:textStyle="bold" />
@@ -163,8 +174,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/release_date_label"
-                    android:layout_marginLeft="@dimen/margin"
-                    android:text="2018-02-13"
+                    android:layout_marginStart="@dimen/margin"
+                    android:text="@string/_2018_02_13"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="@color/Text_color" />
 
@@ -183,9 +194,8 @@
                     android:id="@+id/trailers_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/overview_tv"
                     android:layout_marginBottom="@dimen/mini_margin"
-                    android:text="Trailers"
+                    android:text="@string/trailers"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/Text_color"
                     android:textStyle="bold" />
@@ -199,7 +209,7 @@
                     android:id="@+id/trailers_empty_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="no trailers"
+                    android:text="@string/no_trailers"
                     android:textColor="@color/Text_color"
                     android:visibility="invisible" />
 
@@ -207,9 +217,8 @@
                     android:id="@+id/reviews_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/overview_tv"
                     android:layout_marginBottom="@dimen/mini_margin"
-                    android:text="Reviews"
+                    android:text="@string/reviews"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/Text_color"
                     android:textStyle="bold" />
@@ -223,7 +232,7 @@
                     android:id="@+id/reviews_empty_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="no reviews"
+                    android:text="@string/no_reviews"
                     android:textColor="@color/Text_color"
                     android:visibility="invisible" />
 
