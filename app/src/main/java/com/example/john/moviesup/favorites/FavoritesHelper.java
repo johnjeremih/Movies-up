@@ -18,7 +18,7 @@ public class FavoritesHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        // Create table command for favourites table
+        // Create table command for favorites table
         final String SQL_CREATE_FAVORITES_TABLE = "CREATE TABLE " + Favorites.FavoritesEntry.TABLE_NAME + " (" +
                 Favorites.FavoritesEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 Favorites.FavoritesEntry.COLUMN_MOVIE_ID + " INTEGER NOT NULL, " +

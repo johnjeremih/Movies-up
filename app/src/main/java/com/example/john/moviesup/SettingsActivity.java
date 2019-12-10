@@ -6,6 +6,8 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceFragmentCompat;
+
 import android.os.Bundle;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -14,47 +16,30 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_layout, new MoviesPreferenceFragment())
+                .commit();
+
     }
 
-    public static class MoviesPreferenceFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.settings_main);
+    public static class MoviesPreferenceFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
 
-            Preference orderBy = findPreference(getString(R.string.settings_order_by_key));
-            bindPreferenceSummaryToValue(orderBy);
-        }
 
         @Override
-        public boolean onPreferenceChange(Preference preference, Object value) {
-            String stringValue = value.toString();
-
-            if (preference instanceof ListPreference) {
-                ListPreference listPreference = (ListPreference) preference;
-                int prefIndex = listPreference.findIndexOfValue(stringValue);
-                if (prefIndex >= 0) {
-                    CharSequence[] labels = listPreference.getEntries();
-                    preference.setSummary(labels[prefIndex]);
-                }
-            } else {
-                preference.setSummary(stringValue);
-
-            }
+        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
 
-            return true;
-        }
+            setPreferencesFromResource(R.xml.settings_main, rootKey);
 
-        private void bindPreferenceSummaryToValue(Preference preference) {
-            preference.setOnPreferenceChangeListener(this);
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(preference.getContext());
 
-            String preferenceString = preferences.getString(preference.getKey(), "");
-            onPreferenceChange(preference, preferenceString);
 
         }
 
 
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            return false;
+        }
     }
 }

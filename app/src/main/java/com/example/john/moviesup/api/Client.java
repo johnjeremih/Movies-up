@@ -27,18 +27,6 @@ public class Client {
     private static final String API_QUERY_PARAM_KEY = "api_key";
     private static final String API_KEY = BuildConfig.MOVIE_DB_API_KEY;
     private static final String BASE_URL = "http://api.themoviedb.org/3/";
-    private static Retrofit retrofit = null;
-
-    public static Retrofit getClient() {
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-        }
-        return retrofit;
-    }
 
 
     private interface MovieAPI {
@@ -55,7 +43,7 @@ public class Client {
     }
 
 
-    private static Retrofit getApiService() throws IOException {
+    private static Retrofit getApiService() {
 
         // Create a new HTTP client and add an interceptor to always include api key and English language code
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -93,16 +81,7 @@ public class Client {
 
         Retrofit service = null;
 
-        try {
-            service = getApiService();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (service == null) {
-            return null;
-        }
+        service = getApiService();
 
         return service.create(MovieAPI.class);
 

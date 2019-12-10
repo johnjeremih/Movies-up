@@ -44,6 +44,18 @@
 
 
     <string name="transition_photo">photo_transition</string>
+    <string name="trailers">Trailers</string>
+    <string name="no_trailers">No trailers</string>
+    <string name="reviews">Reviews</string>
+    <string name="no_reviews">no reviews</string>
+    <string name="hello">hello</string>
+    <string name="title">Title</string>
+    <string name="black_panther">Black Panther</string>
+    <string name="_8_6">8.6</string>
+    <string name="overview">Overview</string>
+    <string name="king_t_challa_returns_home_from_america_to_the_reclusive">King T\'Challa returns home from America to the reclusive</string>
+    <string name="release_date">Release Date</string>
+    <string name="_2018_02_13">2018-02-13</string>
 
 
 </resources>
