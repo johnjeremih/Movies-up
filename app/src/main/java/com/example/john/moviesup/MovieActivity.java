@@ -10,7 +10,6 @@ import android.net.NetworkInfo;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
