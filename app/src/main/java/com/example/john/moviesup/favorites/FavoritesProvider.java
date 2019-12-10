@@ -7,11 +7,15 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.Log;
 
 import com.example.john.moviesup.favorites.Favorites.FavoritesEntry;
+
+import java.util.Objects;
+
+import timber.log.Timber;
 
 public class FavoritesProvider extends ContentProvider {
 
@@ -72,7 +76,7 @@ public class FavoritesProvider extends ContentProvider {
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
 
-        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        cursor.setNotificationUri(Objects.requireNonNull(getContext()).getContentResolver(), uri);
         return cursor;
     }
 
@@ -121,11 +125,11 @@ public class FavoritesProvider extends ContentProvider {
 
                 if (newRowId == -1) {
 
-                    Log.e(LOG_TAG, "Movie insert failed for URI: " + uri);
+                    Timber.e("Movie insert failed for URI: %s", uri);
 
                 } else {
 
-                    getContext().getContentResolver().notifyChange(uri, null);
+                    Objects.requireNonNull(getContext()).getContentResolver().notifyChange(uri, null);
                     return ContentUris.withAppendedId(uri, movieId);
 
                 }
@@ -142,6 +146,7 @@ public class FavoritesProvider extends ContentProvider {
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] selectionArgs) {
 
 
+        assert contentValues != null;
         if (contentValues.size() == 0) {
 
             return 0;
@@ -194,7 +199,7 @@ public class FavoritesProvider extends ContentProvider {
         }
 
         if (numberOfRowsUpdated > 0) {
-            getContext().getContentResolver().notifyChange(uri, null);
+            Objects.requireNonNull(getContext()).getContentResolver().notifyChange(uri, null);
         }
 
         return numberOfRowsUpdated;

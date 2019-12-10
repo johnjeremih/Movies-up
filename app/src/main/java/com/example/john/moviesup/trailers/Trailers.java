@@ -10,10 +10,10 @@ public class Trailers {
 
 
     @SerializedName("results")
-    public List<Trailer> items = null;
+    private List<Trailer> items = null;
 
     @SerializedName("id")
-    public int movieId;
+    private int movieId;
 
     public int getMovieId() {
         return movieId;

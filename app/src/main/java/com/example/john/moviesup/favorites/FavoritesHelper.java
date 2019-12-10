@@ -11,7 +11,7 @@ public class FavoritesHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String MODIFY_TABLE_COMMAND = "";
 
-    public FavoritesHelper(Context context) {
+    FavoritesHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

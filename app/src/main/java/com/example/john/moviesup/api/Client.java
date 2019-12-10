@@ -1,6 +1,6 @@
 package com.example.john.moviesup.api;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.example.john.moviesup.BuildConfig;
 
@@ -26,8 +26,8 @@ public class Client {
 
     private static final String API_QUERY_PARAM_KEY = "api_key";
     private static final String API_KEY = BuildConfig.MOVIE_DB_API_KEY;
-    public static final String BASE_URL = "http://api.themoviedb.org/3/";
-    public static Retrofit retrofit = null;
+    private static final String BASE_URL = "http://api.themoviedb.org/3/";
+    private static Retrofit retrofit = null;
 
     public static Retrofit getClient() {
         if (retrofit == null) {
@@ -81,13 +81,12 @@ public class Client {
         }).build();
 
         // Create a basic REST adapter which points to the BASE_URL
-        Retrofit retrofit = new Retrofit.Builder()
+
+        return new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
-        return retrofit;
     }
 
     private static MovieAPI implementApi() {
