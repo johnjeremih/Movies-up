@@ -5,6 +5,5 @@
     <dimen name="margin_new">40dp</dimen>
     <dimen name="margin_poster">60dp</dimen>
     <dimen name="mini_margin">4dp</dimen>
-    <dimen name="margin_half">8dp</dimen>
 
 </resources>
