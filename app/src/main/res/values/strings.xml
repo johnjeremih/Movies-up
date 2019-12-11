@@ -25,7 +25,9 @@
     <string name="settings_order_by_favorites_value" translatable="false">favorites</string>
 
     <!-- Missing key String -->
-    <string name="missing_key_message">The APIKEY is missing and cannot obtain the data without it. Please go to "gradle.properties" and add yours.</string>
+    <string name="missing_key_message">The API KEY is missing and cannot obtain the data without it. Please go to "gradle.properties" and add yours.</string>
+    <!-- Invalid key String -->
+    <string name="invalid_api_key">Your API KEY is invalid</string>
 
     <!-- Labels -->
     <string name="favorite_content_desc">Mark as favorite</string>
@@ -42,7 +44,7 @@
 
 
 
-
+    <!-- Detail Activity -->
     <string name="transition_photo">photo_transition</string>
     <string name="trailers">Trailers</string>
     <string name="no_trailers">No trailers</string>
@@ -55,8 +57,9 @@
     <string name="overview">Overview</string>
     <string name="king_t_challa_returns_home_from_america_to_the_reclusive">King T\'Challa returns home from America to the reclusive</string>
     <string name="release_date">Release Date</string>
-    <string name="_2018_02_13">2018-02-13</string>
+    <string name="_2018_02_13">2018–02–13</string>
     <string name="youtube_icon">youtube icon</string>
+    <string name="imagePth">https://image.tmdb.org/t/p/w500</string>
 
 
 </resources>

@@ -41,7 +41,7 @@ import retrofit2.Response;
 public class DetailActivity extends AppCompatActivity implements TrailersAdapter.TrailerAdapterClickHandler {
 
 
-    // Butterknife inits
+    // ButterKnife init
     @BindView(R.id.title_tv)
     TextView titleView;
     @BindView(R.id.poster_path)
@@ -82,11 +82,6 @@ public class DetailActivity extends AppCompatActivity implements TrailersAdapter
     private TrailersAdapter trailersAdapter;
     private boolean isFavorite = false;
 
-
-    private static final String LOG_TAG = DetailActivity.class.getSimpleName();
-    private Context context;
-    private Intent intent;
-    public static String EXTRA_PHOTO = "extra_photo";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,24 +129,9 @@ public class DetailActivity extends AppCompatActivity implements TrailersAdapter
 
         overviewView.setText(overview);
 
-        Picasso.get()
-                .load("https://image.tmdb.org/t/p/w500" + posterPath)
-                .placeholder(R.drawable.ic_placeholder)
-                .error(R.drawable.ic_error)
-                .into(posterView);
-
-        Picasso.get()
-                .load("https://image.tmdb.org/t/p/w500" + backdropPath)
-                .placeholder(R.drawable.ic_placeholder)
-                .error(R.drawable.ic_error)
-                .into(backDropView);
-
-        Picasso.get()
-                .load("https://image.tmdb.org/t/p/w500" + backGround)
-                .placeholder(R.drawable.ic_placeholder)
-                .error(R.drawable.ic_error)
-                .into(backgroundView);
-
+        loadImages(posterView,posterPath);
+        loadImages(backDropView,backdropPath);
+        loadImages(backgroundView,backGround);
         ratingView.setText(voteAverage);
 
 
@@ -179,6 +159,7 @@ public class DetailActivity extends AppCompatActivity implements TrailersAdapter
             loadTrailers();
 
         } else {
+
             hideReview();
             hideTrailer();
         }
@@ -199,6 +180,14 @@ public class DetailActivity extends AppCompatActivity implements TrailersAdapter
 
             }
         });
+    }
+
+    private void loadImages(ImageView posterView, String path) {
+        Picasso.get()
+                .load(getResources().getString(R.string.imagePth) + path)
+                .placeholder(R.drawable.ic_placeholder)
+                .error(R.drawable.ic_error)
+                .into(posterView);
     }
 
 

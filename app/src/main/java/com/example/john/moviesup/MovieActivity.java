@@ -9,23 +9,29 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.john.moviesup.api.Client;
 import com.example.john.moviesup.model.Movie;
 import com.example.john.moviesup.model.MovieResponse;
 import com.example.john.moviesup.model.MovieResponseAdaptor;
 import com.example.john.moviesup.favorites.Favorites.FavoritesEntry;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -35,13 +41,14 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 public class MovieActivity extends AppCompatActivity implements MovieResponseAdaptor.MovieAdapterClickHandler,
         SharedPreferences.OnSharedPreferenceChangeListener {
 
 
     public static final String DETAIL_MOVIE_KEY = "movie";
     public static final String LIST_STATE_KEY = "extra_list_state";
-
+    private String KEY = BuildConfig.MOVIE_DB_API_KEY;
 
     private MovieResponseAdaptor mAdapter;
     private Parcelable mListState;
@@ -53,9 +60,6 @@ public class MovieActivity extends AppCompatActivity implements MovieResponseAda
     @BindView(R.id.recycler_view_main)
     RecyclerView mRecyclerView;
     private boolean mSettingsUpdated = false;
-    private Context context;
-    private Intent intent;
-
 
 
     @Override
@@ -63,8 +67,6 @@ public class MovieActivity extends AppCompatActivity implements MovieResponseAda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
         ButterKnife.bind(this);
-
-
 
 
         if (savedInstanceState != null) {
@@ -87,17 +89,29 @@ public class MovieActivity extends AppCompatActivity implements MovieResponseAda
 
         boolean isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
 
-        emptyView.setText(R.string.missing_key_message);
 
         if (isConnected) {
 
-            loadMovies();
+
+
+            if (KEY.equals("API KEY")) {
+                emptyView.setVisibility(View.VISIBLE);
+                emptyView.setText(R.string.missing_key_message);
+                progressBar.setVisibility(View.GONE);
+
+            } else {
+                emptyView.setVisibility(View.GONE);
+                loadMovies();
+            }
+
+            if (mSettingsUpdated) {
+                mSettingsUpdated = false;
+            }
 
         } else {
-
-            progressBar.setVisibility(View.GONE);
-
+            emptyView.setVisibility(View.VISIBLE);
             emptyView.setText(R.string.no_internet_connection);
+            progressBar.setVisibility(View.GONE);
 
         }
 
@@ -115,15 +129,6 @@ public class MovieActivity extends AppCompatActivity implements MovieResponseAda
         startActivity(detailLaunch);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (mSettingsUpdated) {
-            loadMovies();
-            mSettingsUpdated = false;
-        }
-    }
 
     @Override
     protected void onDestroy() {
@@ -205,9 +210,7 @@ public class MovieActivity extends AppCompatActivity implements MovieResponseAda
 
     private void loadMovies() {
 
-
         showProgressBar();
-
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String sortOrder = preferences.getString(getString(R.string.settings_order_by_key), getString(R.string.settings_order_by_default));
@@ -253,6 +256,7 @@ public class MovieActivity extends AppCompatActivity implements MovieResponseAda
                     Objects.requireNonNull(mRecyclerView.getLayoutManager()).onRestoreInstanceState(mListState);
                 } else {
                     showEmptyText();
+                    emptyView.setText(getResources().getString(R.string.invalid_api_key));
                 }
             }
 
@@ -260,6 +264,8 @@ public class MovieActivity extends AppCompatActivity implements MovieResponseAda
             public void onFailure(@NonNull Call<MovieResponse> call, @NonNull Throwable t) {
                 call.cancel();
                 showEmptyText();
+                emptyView.setText(getResources().getString(R.string.invalid_api_key));
+
             }
 
         });

@@ -24,9 +24,10 @@
         android:layout_centerInParent="true"
         android:paddingLeft="@dimen/margin"
         android:paddingRight="@dimen/margin"
+        android:text="@string/no_internet_connection"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/Text_color"
-
+        android:textColor="@color/Black"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/progress_bar"
         app:layout_constraintEnd_toStartOf="@+id/recycler_view_main"
         app:layout_constraintHorizontal_bias="0.501"
@@ -35,6 +36,7 @@
         app:layout_constraintVertical_bias="0.915" />
 
     <ProgressBar
+        android:visibility="gone"
         android:id="@+id/progress_bar"
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
