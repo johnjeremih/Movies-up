@@ -9,7 +9,8 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/youtube" />
+        android:src="@drawable/youtube"
+        android:contentDescription="@string/youtube_icon" />
 
     <TextView
         android:id="@+id/trailer_item_name_tv"

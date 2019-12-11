@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 public class Review implements Parcelable {
 
     @SerializedName("id")
-    public String mId;
+    private String mId;
 
     @SerializedName("author")
     public String mAuthor;

@@ -1,15 +1,16 @@
 package com.example.john.moviesup.reviews;
 
 import android.content.Context;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.john.moviesup.R;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewAd
 
     }
 
-    @NotNull
+    @NonNull
     @Override
     public ReviewAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
