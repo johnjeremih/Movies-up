@@ -7,20 +7,19 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.example.john.moviesup.favorites.Favorites.FavoritesEntry;
 
-import java.util.Objects;
-
-import timber.log.Timber;
-
 public class FavoritesProvider extends ContentProvider {
+
+    private static final String LOG_TAG = FavoritesProvider.class.getSimpleName();
 
     public static final int CODE_FAVORITES = 100;
     public static final int CODE_FAVORITES_ITEM = 101;
+
     private static final UriMatcher uriMatcher = buildUriMatcher();
     private FavoritesHelper movieHelper;
 
@@ -73,7 +72,7 @@ public class FavoritesProvider extends ContentProvider {
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
 
-        cursor.setNotificationUri(Objects.requireNonNull(getContext()).getContentResolver(), uri);
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
 
@@ -114,21 +113,26 @@ public class FavoritesProvider extends ContentProvider {
         int match = uriMatcher.match(uri);
         SQLiteDatabase db = movieHelper.getWritableDatabase();
 
-        if (match == CODE_FAVORITES) {
-            newRowId = db.insert(FavoritesEntry.TABLE_NAME, null, contentValues);
+        switch (match) {
+            case CODE_FAVORITES:
 
-            if (newRowId == -1) {
 
-                Timber.e("Movie insert failed for URI: %s", uri);
+                newRowId = db.insert(FavoritesEntry.TABLE_NAME, null, contentValues);
 
-            } else {
+                if (newRowId == -1) {
 
-                Objects.requireNonNull(getContext()).getContentResolver().notifyChange(uri, null);
-                return ContentUris.withAppendedId(uri, movieId);
+                    Log.e(LOG_TAG, "Movie insert failed for URI: " + uri);
 
-            }
-        } else {
-            throw new UnsupportedOperationException("Unknown uri: " + uri);
+                } else {
+
+                    getContext().getContentResolver().notifyChange(uri, null);
+                    return ContentUris.withAppendedId(uri, movieId);
+
+                }
+
+                break;
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
 
         return null;
@@ -138,7 +142,6 @@ public class FavoritesProvider extends ContentProvider {
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] selectionArgs) {
 
 
-        assert contentValues != null;
         if (contentValues.size() == 0) {
 
             return 0;
@@ -164,7 +167,7 @@ public class FavoritesProvider extends ContentProvider {
 
         if (movieId <= 0 || title == null) {
 
-            throw new IllegalArgumentException("A movie needs a valid movie id and a title");
+            throw new IllegalArgumentException("A recipe needs a valid recipe id and a title");
 
         }
 
@@ -191,7 +194,7 @@ public class FavoritesProvider extends ContentProvider {
         }
 
         if (numberOfRowsUpdated > 0) {
-            Objects.requireNonNull(getContext()).getContentResolver().notifyChange(uri, null);
+            getContext().getContentResolver().notifyChange(uri, null);
         }
 
         return numberOfRowsUpdated;
@@ -220,7 +223,7 @@ public class FavoritesProvider extends ContentProvider {
         }
 
         if (numberOfRowsDeleted > 0) {
-            Objects.requireNonNull(getContext()).getContentResolver().notifyChange(uri, null);
+            getContext().getContentResolver().notifyChange(uri, null);
         }
 
         return numberOfRowsDeleted;

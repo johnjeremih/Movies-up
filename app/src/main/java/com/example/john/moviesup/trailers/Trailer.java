@@ -7,17 +7,17 @@ public class Trailer {
     private static final String TRAILER_BASE_URL = "https://www.youtube.com/watch?v=";
 
     @SerializedName("id")
-    private String mId;
+    public String mId;
 
     @SerializedName("key")
-    private String mKey;
+    public String mKey;
 
     @SerializedName("name")
-    private String mName;
+    public String mName;
 
 
     @SerializedName("type")
-    private String mType;
+    public String mType;
 
     public Trailer(String id, String key, String name, String type){
         mId = id;
@@ -51,7 +51,7 @@ public class Trailer {
         mName = newName;
     }
 
-    String getType() {
+    public String getType() {
         return mType;
     }
 

@@ -7,7 +7,7 @@
     android:background="@color/Black"
     app:layout_scrollFlags="scroll|enterAlways">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

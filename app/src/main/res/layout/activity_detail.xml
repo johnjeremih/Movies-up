@@ -190,7 +190,7 @@
                     android:textColor="@color/Text_color"
                     android:textStyle="bold" />
 
-                <androidx.recyclerview.widget.RecyclerView
+                <android.support.v7.widget.RecyclerView
                     android:id="@+id/trailers_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -214,7 +214,7 @@
                     android:textColor="@color/Text_color"
                     android:textStyle="bold" />
 
-                <androidx.recyclerview.widget.RecyclerView
+                <android.support.v7.widget.RecyclerView
                     android:id="@+id/reviews_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

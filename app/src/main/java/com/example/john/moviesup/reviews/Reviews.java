@@ -11,14 +11,14 @@ public class Reviews {
 
 
     @SerializedName("results")
-    private List<Review> items = null;
+    public List<Review> items = null;
 
 
     @SerializedName("total_results")
-    private int reviewCount;
+    public int reviewCount;
 
     @SerializedName("id")
-    private int movieId;
+    public int movieId;
 
     public int getReviewCount() {
         return reviewCount;
