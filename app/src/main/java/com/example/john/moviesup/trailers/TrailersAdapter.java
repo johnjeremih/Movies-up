@@ -1,16 +1,14 @@
 package com.example.john.moviesup.trailers;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.john.moviesup.DetailActivity;
 import com.example.john.moviesup.R;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
@@ -20,6 +18,7 @@ public class TrailersAdapter  extends RecyclerView.Adapter<TrailersAdapter.Trail
 
     private static final String LOG_TAG = TrailersAdapter.class.getSimpleName();
     private ArrayList<Trailer> mTrailers;
+    private Context mContext;
     private final TrailersAdapter.TrailerAdapterClickHandler mClickHandler;
 
 
@@ -31,6 +30,7 @@ public class TrailersAdapter  extends RecyclerView.Adapter<TrailersAdapter.Trail
 
     // Public constructor
     public TrailersAdapter(Context context, TrailerAdapterClickHandler handler) {
+        mContext = context;
         mClickHandler = handler;
     }
 
@@ -42,7 +42,7 @@ public class TrailersAdapter  extends RecyclerView.Adapter<TrailersAdapter.Trail
         @BindView (R.id.trailer_item_type_tv) TextView mTypeTextView;
 
         // Constructor for the ViewHolder class
-        TrailerAdapterViewHolder(View view) {
+        public TrailerAdapterViewHolder(View view) {
             super(view);
 
             // Butterknife binding
@@ -57,7 +57,6 @@ public class TrailersAdapter  extends RecyclerView.Adapter<TrailersAdapter.Trail
         }
     }
 
-    @NotNull
     @Override
     public TrailerAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 

@@ -1,15 +1,13 @@
 package com.example.john.moviesup.reviews;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.john.moviesup.R;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +19,13 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewAd
 
     private static final String LOG_TAG = ReviewsAdapter.class.getSimpleName();
     private ArrayList<Review> mReviews;
+    private Context mContext;
 
     public ReviewsAdapter(Context context) {
+        mContext = context;
     }
 
-    class ReviewAdapterViewHolder extends RecyclerView.ViewHolder {
+    public class ReviewAdapterViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.review_item_content)
         TextView mContentView;
@@ -33,7 +33,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewAd
         TextView mAuthorView;
 
 
-        ReviewAdapterViewHolder(View view) {
+        public ReviewAdapterViewHolder(View view) {
             super(view);
 
             // Butterknife binding
@@ -43,7 +43,6 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewAd
 
     }
 
-    @NotNull
     @Override
     public ReviewAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 

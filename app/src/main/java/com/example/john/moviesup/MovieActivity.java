@@ -1,5 +1,7 @@
 package com.example.john.moviesup;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,16 +11,17 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,8 +32,6 @@ import com.example.john.moviesup.model.MovieResponseAdaptor;
 import com.example.john.moviesup.favorites.Favorites.FavoritesEntry;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -83,7 +84,6 @@ public class MovieActivity extends AppCompatActivity implements MovieResponseAda
 
         ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        assert connectivityManager != null;
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
         boolean isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
@@ -305,7 +305,7 @@ public class MovieActivity extends AppCompatActivity implements MovieResponseAda
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putParcelable(LIST_STATE_KEY, Objects.requireNonNull(mRecyclerView.getLayoutManager()).onSaveInstanceState());
+        outState.putParcelable(LIST_STATE_KEY, mRecyclerView.getLayoutManager().onSaveInstanceState());
         super.onSaveInstanceState(outState);
     }
 
@@ -365,7 +365,7 @@ public class MovieActivity extends AppCompatActivity implements MovieResponseAda
             mAdapter.setMovieData(movies);
 
             showRecyclerContainer();
-            Objects.requireNonNull(mRecyclerView.getLayoutManager()).onRestoreInstanceState(mListState);
+            mRecyclerView.getLayoutManager().onRestoreInstanceState(mListState);
 
         } else {
             emptyView.setText(R.string.favorite_empty_text);

@@ -11,14 +11,14 @@ public class FavoritesHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String MODIFY_TABLE_COMMAND = "";
 
-    FavoritesHelper(Context context) {
+    public FavoritesHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        // Create table command for favorites table
+        // Create table command for favourites table
         final String SQL_CREATE_FAVORITES_TABLE = "CREATE TABLE " + Favorites.FavoritesEntry.TABLE_NAME + " (" +
                 Favorites.FavoritesEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 Favorites.FavoritesEntry.COLUMN_MOVIE_ID + " INTEGER NOT NULL, " +
