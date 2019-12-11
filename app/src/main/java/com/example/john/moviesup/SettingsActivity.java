@@ -23,7 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
-    public static class MoviesPreferenceFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
+    public static class MoviesPreferenceFragment extends PreferenceFragmentCompat  {
 
 
         @Override
@@ -36,10 +36,5 @@ public class SettingsActivity extends AppCompatActivity {
 
         }
 
-
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object newValue) {
-            return false;
-        }
     }
 }

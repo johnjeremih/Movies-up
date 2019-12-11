@@ -250,7 +250,7 @@ public class MovieActivity extends AppCompatActivity implements MovieResponseAda
                     List<Movie> movieList = movies.getResults();
                     mAdapter.setMovieData(movieList);
                     showRecyclerContainer();
-                    mRecyclerView.getLayoutManager().onRestoreInstanceState(mListState);
+                    Objects.requireNonNull(mRecyclerView.getLayoutManager()).onRestoreInstanceState(mListState);
                 } else {
                     showEmptyText();
                 }
